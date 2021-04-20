@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
+const assert = require('assert');
 
 var app = express();
 var users;
@@ -10,15 +11,19 @@ app.use(express.static('front'));
 app.use(bodyParser.json());
 app.listen(3000);
 
-const url = 'mongodb://localhost:127.0.0.1:27017/db'
+
+const url = 'mongodb://127.0.0.1:27017/db'
 
 if(testMode){
+  console.log("Test to server");
  mongodb.MongoClient.connect("mongodb://localhost:27017/test", function(err, database) {
   users = database.collection("users");
  });
 }else{
  mongodb.MongoClient.connect(url, function(err, database) {
-  users = database.collection("users");
+   assert.equal(null,err);
+   console.log("Connected successfully to server");
+   users = database.collection("users");
  });
 }
 // 一覧取得
