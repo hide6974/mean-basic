@@ -4,15 +4,23 @@ var mongodb = require('mongodb');
 
 var app = express();
 var users;
+var testMode = false;// test true
 
 app.use(express.static('front'));
 app.use(bodyParser.json());
 app.listen(3000);
 
-mongodb.MongoClient.connect("mongodb://localhost:27017/test", function(err, database) {
-  users = database.collection("users");
-});
+const url = 'mongodb://localhost:127.0.0.1:27017/db'
 
+if(testMode){
+ mongodb.MongoClient.connect("mongodb://localhost:27017/test", function(err, database) {
+  users = database.collection("users");
+ });
+}else{
+ mongodb.MongoClient.connect(url, function(err, database) {
+  users = database.collection("users");
+ });
+}
 // 一覧取得
 app.get("/api/users", function(req, res) {
   users.find().toArray(function(err, items) {
