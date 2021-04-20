@@ -1,11 +1,21 @@
 # 手作りMEAN Stack
 
-業務アプリをAngularJS+PHP+MySQLで組んでいたのですが、JavaScriptとPHPの文法の微妙な違いのおかげでケアレスミスが多く出てきてしまいました。
 
-そこで、フロントエンドもバックエンドもJavaScriptで統一できる、流行りのMEAN Stack(MongoDB+Express+AngularJS+Node.js)を試してみようと考えた次第です。
+1.macでフォルダ作成　以下手順で実施
+git clone \https://github.com/naga3/mean-basic
 
-MEAN Stackのひな形を作るツールもいろいろあるのですが、今回は手作りで作成してみます。
-WindowsとUbuntuの導入方法を挙げますが、他のOSでもほとんど同じ感じでいけると思います。
+2.以下必要なモジュールインストール
+npm install express
+npm install body-parser
+npm install mongodb
 
+3.アクセス
+http://localhost:3000/
+
+
+MEAN Stack(MongoDB+Express+AngularJS+Node.js)を試してみようと考えた次第です。
+
+
+いただいた元git
 ソースの解説はこちらにあります。
 http://qiita.com/naga3/items/e63144e17cb1ab9e03e9
